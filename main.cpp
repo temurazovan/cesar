@@ -9,15 +9,25 @@ std::string encrypt_caesar(std::string text, int shift)  {
 }
 
 int main() {
-   std::string text;
-   int shift;
+    std::string text;
+    int shift;
 
-   std::cout << "Input the text: ";
-   std::cin >> text;
-   std::cout << std::endl;
-   std::cout << "Input the shift: ";
-   std::cin >> shift;
+    std::cout << "Input the text: ";
+    std::getline(std::cin, text);
 
-   std::cout << encrypt_caesar(text, shift);
+    for (char symbol: text) {
+        if (!((symbol >= 'A' && symbol <= 'Z') || (symbol >= 'a' && symbol <= 'z') || symbol == ' ')) {
+            std::cout << "Incorrect text!";
+            return 0;
+        }
+
+    }
+
+    std::cout << std::endl;
+    std::cout << "Input the shift: ";
+    std::cin >> shift;
+    shift %= 26;
+    std::cout << std::endl;
+    std::cout << encrypt_caesar(text, shift);
 
 }
